@@ -1,11 +1,12 @@
 %define name libtheora
 %define version 1.0
-%define pre alpha7
+%define pre beta1
 %define fversion %version%pre
 %define rel 0.%pre.1
 %define release %mkrel %rel
 %define major 0
 %define libname %mklibname theora %major
+%define develname %mklibname -d theora
 #fixed2
 %{?!mkrel:%define mkrel(c:) %{-c: 0.%{-c*}.}%{!?_with_unstable:%(perl -e '$_="%{1}";m/(.\*\\D\+)?(\\d+)$/;$rel=${2}-1;re;print "$1$rel";').%{?subrel:%subrel}%{!?subrel:1}.%{?distversion:%distversion}%{?!distversion:%(echo $[%{mdkversion}/10])}}%{?_with_unstable:%{1}}%{?distsuffix:%distsuffix}%{?!distsuffix:mdk}}
 
@@ -13,7 +14,7 @@ Summary: Theora video compression codec
 Name: %{name}
 Version: %{version}
 Release: %{release}
-Source0: http://www.theora.org/files/%{name}-%{fversion}.tar.bz2
+Source0: http://downloads.xiph.org/releases/theora/%{name}-%{fversion}.tar.gz
 URL: http://www.theora.org/
 License: BSD
 Group: Video
@@ -35,15 +36,16 @@ Group: System/Libraries
 Ogg Theora is a fully open, non-proprietary, patent-and-royalty-free,
 general-purpose compressed video format.
 
-%package -n %{libname}-devel
+%package -n %develname
 Summary: Headers for developing programs that will use %{name}
 Group: Development/C
 Requires: libogg-devel >= 1.0.1
 Requires: %libname = %version
 Provides: %name-devel = %version-%release
-Obsoletes: %name-devel
+Obsoletes: %mklibname -d theora 0
 
-%description -n %libname-devel
+
+%description -n %develname
 This package contains the headers that programmers will need to develop
 applications which will use %{name}.
 
@@ -71,7 +73,7 @@ rm -rf $RPM_BUILD_ROOT
 %_libdir/libtheora*.so.%{major}*
 
 %doc README COPYING
-%files -n %libname-devel
+%files -n %develname
 %defattr(-,root,root)
 %doc installed-docs/*
 %_includedir/theora
