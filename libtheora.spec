@@ -1,20 +1,18 @@
 %define name libtheora
 %define version 1.0
-%define pre beta1
+%define pre beta2
 %define fversion %version%pre
 %define rel 0.%pre.1
 %define release %mkrel %rel
 %define major 0
 %define libname %mklibname theora %major
 %define develname %mklibname -d theora
-#fixed2
-%{?!mkrel:%define mkrel(c:) %{-c: 0.%{-c*}.}%{!?_with_unstable:%(perl -e '$_="%{1}";m/(.\*\\D\+)?(\\d+)$/;$rel=${2}-1;re;print "$1$rel";').%{?subrel:%subrel}%{!?subrel:1}.%{?distversion:%distversion}%{?!distversion:%(echo $[%{mdkversion}/10])}}%{?_with_unstable:%{1}}%{?distsuffix:%distsuffix}%{?!distsuffix:mdk}}
 
 Summary: Theora video compression codec
 Name: %{name}
 Version: %{version}
 Release: %{release}
-Source0: http://downloads.xiph.org/releases/theora/%{name}-%{fversion}.tar.gz
+Source0: http://downloads.xiph.org/releases/theora/%{name}-%{fversion}.tar.bz2
 URL: http://www.theora.org/
 License: BSD
 Group: Video
