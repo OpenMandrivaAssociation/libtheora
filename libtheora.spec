@@ -16,6 +16,7 @@ Source0: http://downloads.xiph.org/releases/theora/%{name}-%{fversion}.tar.bz2
 URL: http://www.theora.org/
 License: BSD
 Group: Video
+BuildRoot: %{_tmppath}/%{name}-buildroot
 BuildRequires: automake1.7 >= 1.7.9
 BuildRequires: autoconf2.5 >= 2.54
 BuildRequires: libvorbis-devel >= 1.0.1
