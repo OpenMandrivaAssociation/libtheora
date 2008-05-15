@@ -1,11 +1,15 @@
 %define name libtheora
 %define version 1.0
-%define pre beta2
+%define pre beta3
 %define fversion %version%pre
 %define rel 0.%pre.1
 %define release %mkrel %rel
 %define major 0
+%define decmajor 1
+%define encmajor 1
 %define libname %mklibname theora %major
+%define libnamedec %mklibname theoradec %decmajor
+%define libnameenc %mklibname theoraenc %decmajor
 %define develname %mklibname -d theora
 
 Summary: Theora video compression codec
@@ -13,6 +17,8 @@ Name: %{name}
 Version: %{version}
 Release: %{release}
 Source0: http://downloads.xiph.org/releases/theora/%{name}-%{fversion}.tar.bz2
+#gw this is from texlive, it is not part of tetex
+Source1: ltablex.sty
 URL: http://www.theora.org/
 License: BSD
 Group: Video
@@ -34,11 +40,29 @@ Group: System/Libraries
 Ogg Theora is a fully open, non-proprietary, patent-and-royalty-free,
 general-purpose compressed video format.
 
+%package -n %{libnamedec}
+Summary: Theora video decoder
+Group: System/Libraries
+
+%description -n %{libnamedec}
+Ogg Theora is a fully open, non-proprietary, patent-and-royalty-free,
+general-purpose compressed video format.
+
+%package -n %{libnameenc}
+Summary: Theora video encoder
+Group: System/Libraries
+
+%description -n %{libnameenc}
+Ogg Theora is a fully open, non-proprietary, patent-and-royalty-free,
+general-purpose compressed video format.
+
 %package -n %develname
 Summary: Headers for developing programs that will use %{name}
 Group: Development/C
 Requires: libogg-devel >= 1.0.1
 Requires: %libname = %version
+Requires: %libnameenc = %version
+Requires: %libnamedec = %version
 Provides: %name-devel = %version-%release
 Obsoletes: %mklibname -d theora 0
 
@@ -49,6 +73,7 @@ applications which will use %{name}.
 
 %prep
 %setup -q -n %name-%fversion
+cp %SOURCE1 doc/spec/
 
 %build
 %configure2_5x
@@ -60,17 +85,36 @@ rm -rf $RPM_BUILD_ROOT installed-docs
 mv %buildroot%_datadir/doc/libtheora installed-docs
 rm -f installed-docs/doxygen-build.stamp
 
+%check
+make check
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %post   -n %{libname}	-p /sbin/ldconfig
 %postun -n %{libname}	-p /sbin/ldconfig
+%post   -n %{libnamedec}	-p /sbin/ldconfig
+%postun -n %{libnamedec}	-p /sbin/ldconfig
+%post   -n %{libnameenc}	-p /sbin/ldconfig
+%postun -n %{libnameenc}	-p /sbin/ldconfig
+
 
 %files -n %libname
 %defattr(-,root,root)
-%_libdir/libtheora*.so.%{major}*
-
 %doc README COPYING
+%_libdir/libtheora.so.%{major}*
+
+%files -n %libnamedec
+%defattr(-,root,root)
+%doc README COPYING
+%_libdir/libtheoradec.so.%{decmajor}*
+
+%files -n %libnameenc
+%defattr(-,root,root)
+%doc README COPYING
+%_libdir/libtheoraenc.so.%{encmajor}*
+
+
 %files -n %develname
 %defattr(-,root,root)
 %doc installed-docs/*
@@ -78,3 +122,5 @@ rm -rf $RPM_BUILD_ROOT
 %_libdir/libtheora*a
 %_libdir/libtheora*so
 %_libdir/pkgconfig/theora.pc
+%_libdir/pkgconfig/theoradec.pc
+%_libdir/pkgconfig/theoraenc.pc
