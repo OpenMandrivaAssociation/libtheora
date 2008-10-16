@@ -21,6 +21,8 @@ Release: %{release}
 Source0: http://downloads.xiph.org/releases/theora/%{name}-%{fversion}.tar.bz2
 #gw this is from texlive, it is not part of tetex
 Source1: ltablex.sty
+#gw add missing file needed on x86_64
+Patch: libtheora-1.0RC1-missing.patch
 URL: http://www.theora.org/
 License: BSD
 Group: Video
@@ -76,6 +78,7 @@ applications which will use %{name}.
 %prep
 %setup -q -n %name-%fversion
 cp %SOURCE1 doc/spec/
+%patch -p1
 
 %build
 %configure2_5x
