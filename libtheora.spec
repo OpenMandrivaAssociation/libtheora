@@ -2,8 +2,8 @@
 
 %define name libtheora
 %define version 1.0
-%define pre RC1
-%define fversion %version%pre
+%define pre rc1
+%define fversion %{version}RC1
 %define rel 0.%pre.1
 %define release %mkrel %rel
 %define major 0
