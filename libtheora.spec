@@ -2,8 +2,8 @@
 
 %define name libtheora
 %define version 1.0
-%define pre rc1
-%define fversion %{version}RC1
+%define pre rc2
+%define fversion %{version}RC2
 %define rel 0.%pre.1
 %define release %mkrel %rel
 %define major 0
@@ -76,9 +76,9 @@ This package contains the headers that programmers will need to develop
 applications which will use %{name}.
 
 %prep
-%setup -q -n %name-%fversion
+%setup -q -n %name-%version
 cp %SOURCE1 doc/spec/
-%patch -p1
+#%patch -p1
 
 %build
 %configure2_5x
