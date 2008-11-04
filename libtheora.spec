@@ -2,10 +2,8 @@
 
 %define name libtheora
 %define version 1.0
-%define pre rc2
-%define fversion %{version}RC2
-%define rel 0.%pre.1
-%define release %mkrel %rel
+%define fversion %{version}
+%define release %mkrel 1
 %define major 0
 %define decmajor 1
 %define encmajor 1
@@ -21,8 +19,6 @@ Release: %{release}
 Source0: http://downloads.xiph.org/releases/theora/%{name}-%{fversion}.tar.bz2
 #gw this is from texlive, it is not part of tetex
 Source1: ltablex.sty
-#gw add missing file needed on x86_64
-Patch: libtheora-1.0RC1-missing.patch
 URL: http://www.theora.org/
 License: BSD
 Group: Video
@@ -76,9 +72,8 @@ This package contains the headers that programmers will need to develop
 applications which will use %{name}.
 
 %prep
-%setup -q -n %name-%version
+%setup -q -n %name-%fversion
 cp %SOURCE1 doc/spec/
-#%patch -p1
 
 %build
 %configure2_5x
