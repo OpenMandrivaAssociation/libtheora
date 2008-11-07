@@ -3,7 +3,7 @@
 %define name libtheora
 %define version 1.0
 %define fversion %{version}
-%define release %mkrel 1
+%define release %mkrel 2
 %define major 0
 %define decmajor 1
 %define encmajor 1
@@ -35,6 +35,7 @@ general-purpose compressed video format.
 %package -n %{libname}
 Summary: Theora video compression codec
 Group: System/Libraries
+Provides: %{name} = %{version}-%{release}
 
 %description -n %{libname}
 Ogg Theora is a fully open, non-proprietary, patent-and-royalty-free,
