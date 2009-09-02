@@ -3,7 +3,7 @@
 %define name libtheora
 %define version 1.0
 %define fversion %{version}
-%define release %mkrel 2
+%define release %mkrel 3
 %define major 0
 %define decmajor 1
 %define encmajor 1
