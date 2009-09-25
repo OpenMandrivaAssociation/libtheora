@@ -27,6 +27,7 @@ BuildRequires: automake1.7 >= 1.7.9
 BuildRequires: autoconf2.5 >= 2.54
 BuildRequires: libvorbis-devel >= 1.0.1
 BuildRequires: libSDL-devel
+BuildRequires: zlib-devel
 
 %description
 Ogg Theora is a fully open, non-proprietary, patent-and-royalty-free,
