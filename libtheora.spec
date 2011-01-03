@@ -3,7 +3,7 @@
 %define name libtheora
 %define version 1.1.1
 %define fversion %{version}
-%define release %mkrel 1
+%define release %mkrel 2
 %define major 0
 %define decmajor 1
 %define encmajor 1
@@ -23,7 +23,7 @@ URL: http://www.theora.org/
 License: BSD
 Group: Video
 BuildRoot: %{_tmppath}/%{name}-buildroot
-BuildRequires: automake1.7 >= 1.7.9
+BuildRequires: automake >= 1.7.9
 BuildRequires: autoconf2.5 >= 2.54
 BuildRequires: libvorbis-devel >= 1.0.1
 BuildRequires: libSDL-devel
