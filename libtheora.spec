@@ -15,14 +15,13 @@
 Summary: Theora video compression codec
 Name: %{name}
 Version: %{version}
-Release: %{release}
+Release: 4
 Source0: http://downloads.xiph.org/releases/theora/%{name}-%{fversion}.tar.bz2
 #gw this is from texlive, it is not part of tetex
 Source1: ltablex.sty
 URL: http://www.theora.org/
 License: BSD
 Group: Video
-BuildRoot: %{_tmppath}/%{name}-buildroot
 BuildRequires: automake >= 1.7.9
 BuildRequires: autoconf2.5 >= 2.54
 BuildRequires: libvorbis-devel >= 1.0.1
@@ -68,10 +67,18 @@ Requires: %libnamedec = %version
 Provides: %name-devel = %version-%release
 Obsoletes: %mklibname -d theora 0
 
-
 %description -n %develname
 This package contains the headers that programmers will need to develop
 applications which will use %{name}.
+
+%package -n theora-tools
+Summary: Command line tools for Theora videos
+Group: Video
+Requires: %libname = %version
+
+%description -n theora-tools
+The theora-tools package contains simple command line tools for use
+with theora bitstreams.define	name	vorbis-tools
 
 %prep
 %setup -q -n %name-%fversion
@@ -82,16 +89,17 @@ cp %SOURCE1 doc/spec/
 %make
 
 %install
-rm -rf $RPM_BUILD_ROOT installed-docs
 %makeinstall_std docdir=%_datadir/doc/libtheora
 mv %buildroot%_datadir/doc/libtheora installed-docs
 rm -f installed-docs/doxygen-build.stamp
 
+mkdir -p %{buildroot}/%{_bindir}
+install -m 755 examples/.libs/dump_video %{buildroot}/%{_bindir}/theora_dump_video
+install -m 755 examples/.libs/encoder_example %{buildroot}/%{_bindir}/theora_encode
+install -m 755 examples/.libs/player_example %{buildroot}/%{_bindir}/theora_player
+
 %check
 make check
-
-%clean
-rm -rf $RPM_BUILD_ROOT
 
 %if %mdkversion < 200900
 %post   -n %{libname}	-p /sbin/ldconfig
@@ -114,23 +122,21 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %files -n %libname
-%defattr(-,root,root)
 %doc README COPYING
 %_libdir/libtheora.so.%{major}*
 
 %files -n %libnamedec
-%defattr(-,root,root)
 %doc README COPYING
 %_libdir/libtheoradec.so.%{decmajor}*
 
 %files -n %libnameenc
-%defattr(-,root,root)
 %doc README COPYING
 %_libdir/libtheoraenc.so.%{encmajor}*
 
+%files -n theora-tools
+%{_bindir}/*
 
 %files -n %develname
-%defattr(-,root,root)
 %doc installed-docs/*
 %_includedir/theora
 %_libdir/libtheora*a
