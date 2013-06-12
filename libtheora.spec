@@ -11,7 +11,7 @@
 Summary:	Theora video compression codec
 Name:		libtheora
 Version:	1.1.1
-Release:	6
+Release:	7
 License:	BSD
 Group:		Video
 URL:		http://www.theora.org/
@@ -135,7 +135,7 @@ make check
 + Revision: 627715
 - don't force the usage of automake1.7
 
-* Fri Nov 06 2009 Götz Waschk <waschk@mandriva.org> 1.1.1-1mdv2011.0
+* Fri Nov 06 2009 GÃ¶tz Waschk <waschk@mandriva.org> 1.1.1-1mdv2011.0
 + Revision: 460833
 - new version
 
@@ -152,17 +152,17 @@ make check
 + Revision: 300809
 - provide libtheora by library subpackage
 
-* Tue Nov 04 2008 Götz Waschk <waschk@mandriva.org> 1.0-1mdv2009.1
+* Tue Nov 04 2008 GÃ¶tz Waschk <waschk@mandriva.org> 1.0-1mdv2009.1
 + Revision: 299912
 - new version
 - remove patch
 
-* Mon Nov 03 2008 Götz Waschk <waschk@mandriva.org> 1.0-0.rc2.1mdv2009.1
+* Mon Nov 03 2008 GÃ¶tz Waschk <waschk@mandriva.org> 1.0-0.rc2.1mdv2009.1
 + Revision: 299449
 - new version
 - drop patch
 
-* Thu Oct 16 2008 Götz Waschk <waschk@mandriva.org> 1.0-0.rc1.1mdv2009.1
+* Thu Oct 16 2008 GÃ¶tz Waschk <waschk@mandriva.org> 1.0-0.rc1.1mdv2009.1
 + Revision: 294201
 - add missing file
 - new version
@@ -174,7 +174,7 @@ make check
   + Pixel <pixel@mandriva.com>
     - do not call ldconfig in %%post/%%postun, it is now handled by filetriggers
 
-* Thu May 15 2008 Götz Waschk <waschk@mandriva.org> 1.0-0.beta3.1mdv2009.0
+* Thu May 15 2008 GÃ¶tz Waschk <waschk@mandriva.org> 1.0-0.beta3.1mdv2009.0
 + Revision: 207511
 - new version
 - add missing LaTeX style for documentation build
@@ -187,36 +187,36 @@ make check
   + Thierry Vignaud <tv@mandriva.org>
     - kill re-definition of %%buildroot on Pixel's request
 
-* Mon Oct 22 2007 Götz Waschk <waschk@mandriva.org> 1.0-0.beta2.1mdv2008.1
+* Mon Oct 22 2007 GÃ¶tz Waschk <waschk@mandriva.org> 1.0-0.beta2.1mdv2008.1
 + Revision: 101110
 - new version
 
-* Tue Oct 09 2007 Götz Waschk <waschk@mandriva.org> 1.0-0.beta1.1mdv2008.1
+* Tue Oct 09 2007 GÃ¶tz Waschk <waschk@mandriva.org> 1.0-0.beta1.1mdv2008.1
 + Revision: 96167
 - new version
 - new devel name
 
-* Sat Jun 23 2007 Götz Waschk <waschk@mandriva.org> 1.0-0.alpha7.1mdv2008.0
+* Sat Jun 23 2007 GÃ¶tz Waschk <waschk@mandriva.org> 1.0-0.alpha7.1mdv2008.0
 + Revision: 43409
 - Import libtheora
 
 
 
-* Thu Jun 22 2006 G�tz Waschk <waschk@mandriva.org> 1.0-0.alpha7.1mdv2007.0
+* Thu Jun 22 2006 Götz Waschk <waschk@mandriva.org> 1.0-0.alpha7.1mdv2007.0
 - new version
 
-* Fri Jun  9 2006 G�tz Waschk <waschk@mandriva.org> 1.0-0.alpha6.1mdv2007.0
+* Fri Jun  9 2006 Götz Waschk <waschk@mandriva.org> 1.0-0.alpha6.1mdv2007.0
 - drop patches
 - new version
 
-* Wed Sep  7 2005 G�tz Waschk <waschk@mandriva.org> 1.0-0.alpha5.1mdk
+* Wed Sep  7 2005 Götz Waschk <waschk@mandriva.org> 1.0-0.alpha5.1mdk
 - rediff patch 0
 - new version
 
 * Thu May 12 2005 Oden Eriksson <oeriksson@mandriva.com> 1.0-0.alpha4.2mdk
 - rebuild
 
-* Mon Apr 25 2005 G�tz Waschk <waschk@mandriva.org> 1.0-0.alpha4.1mdk
+* Mon Apr 25 2005 Götz Waschk <waschk@mandriva.org> 1.0-0.alpha4.1mdk
 - mkrel
 - libification
 - rediff patch 0
@@ -226,9 +226,9 @@ make check
 - lib64 fixes
 - build static library with PIC as it can be built into a DSO
 
-* Wed Apr 21 2004 G�tz Waschk <waschk@linux-mandrake.com> 1.0-0.alpha3.2mdk
+* Wed Apr 21 2004 Götz Waschk <waschk@linux-mandrake.com> 1.0-0.alpha3.2mdk
 - fix buildrequires
 - fix URL
 
-* Fri Apr  2 2004 G�tz Waschk <waschk@linux-mandrake.com> 1.0-0.alpha3.1mdk
+* Fri Apr  2 2004 Götz Waschk <waschk@linux-mandrake.com> 1.0-0.alpha3.1mdk
 - initial package
