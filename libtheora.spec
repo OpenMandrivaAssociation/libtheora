@@ -18,6 +18,7 @@ Url:		http://www.theora.org/
 Source0:	http://downloads.xiph.org/releases/theora/%{name}-%{version}.tar.bz2
 #gw this is from texlive, it is not part of tetex
 Source1:	ltablex.sty
+Patch0:		libtheora-1.1.1-libpng16.patch
 BuildRequires:	pkgconfig(sdl)
 BuildRequires:	pkgconfig(vorbis) >= 1.0.1
 BuildRequires:	pkgconfig(zlib)
@@ -74,6 +75,7 @@ with theora bitstreams.define name vorbis-tools
 
 %prep
 %setup -q
+%patch0 -p0
 cp %{SOURCE1} doc/spec/
 
 %build
