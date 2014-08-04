@@ -79,7 +79,10 @@ with theora bitstreams.define name vorbis-tools
 cp %{SOURCE1} doc/spec/
 
 %build
-%configure2_5x \
+# remove fforce-addr
+# clang does not like it
+sed -i 's/-fforce-addr//g' configure
+%configure \
 	--disable-static
 %make
 
