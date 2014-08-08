@@ -80,6 +80,7 @@ with theora bitstreams.define name vorbis-tools
 %patch0 -p0 -b .p0~
 %patch1 -p1 -b .p1~
 cp %{SOURCE1} doc/spec/
+%before_configure
 ./autogen.sh
 
 %build
