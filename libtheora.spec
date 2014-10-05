@@ -87,6 +87,8 @@ cp %{SOURCE1} doc/spec/
 # remove fforce-addr
 # clang does not like it
 sed -i 's/-fforce-addr//g' configure
+# ARM need gcc
+export CC=gcc
 %configure \
 	--disable-static
 %make
@@ -123,4 +125,3 @@ make check
 %{_libdir}/pkgconfig/theora.pc
 %{_libdir}/pkgconfig/theoradec.pc
 %{_libdir}/pkgconfig/theoraenc.pc
-
