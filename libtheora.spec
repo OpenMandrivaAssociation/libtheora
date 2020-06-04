@@ -12,7 +12,7 @@
 Summary:	Theora video compression codec
 Name:		libtheora
 Version:	1.2.0
-Release:	%{?beta:0.%{beta}.}2
+Release:	%{?beta:0.%{beta}.}3
 License:	BSD
 Group:		Video
 Url:		http://www.theora.org/
@@ -87,8 +87,6 @@ cp %{SOURCE1} doc/spec/
 # remove fforce-addr
 # clang does not like it
 sed -i 's/-fforce-addr//g' configure
-# ARM need gcc
-export CC=gcc
 %configure \
 	--disable-static
 %make
