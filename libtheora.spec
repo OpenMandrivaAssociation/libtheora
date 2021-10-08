@@ -89,10 +89,11 @@ cp %{SOURCE1} doc/spec/
 sed -i 's/-fforce-addr//g' configure
 %configure \
 	--disable-static
-%make
+
+%make_build
 
 %install
-%makeinstall_std docdir=%{_datadir}/doc/libtheora
+%make_install docdir=%{_datadir}/doc/libtheora
 mv %{buildroot}%{_datadir}/doc/libtheora installed-docs
 rm -f installed-docs/doxygen-build.stamp
 
@@ -100,9 +101,6 @@ mkdir -p %{buildroot}/%{_bindir}
 install -m 755 examples/.libs/dump_video %{buildroot}/%{_bindir}/theora_dump_video
 install -m 755 examples/.libs/encoder_example %{buildroot}/%{_bindir}/theora_encode
 install -m 755 examples/.libs/player_example %{buildroot}/%{_bindir}/theora_player
-
-%check
-make check
 
 %files -n %{libname}
 %{_libdir}/libtheora.so.%{major}*
