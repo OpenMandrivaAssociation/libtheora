@@ -1,6 +1,6 @@
 %define _disable_ld_no_undefined 1
 
-%define major 0
+%define major 2
 %define decmajor 1
 %define encmajor 1
 %define libname %mklibname theora %{major}
