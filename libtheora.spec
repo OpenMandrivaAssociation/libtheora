@@ -16,7 +16,7 @@ Release:	%{?beta:0.%{beta}.}1
 License:	BSD
 Group:		Video
 Url:		https://www.theora.org/
-Source0:	http://downloads.xiph.org/releases/theora/%{name}-%{version}%{beta}.tar.xz
+Source0:	http://downloads.xiph.org/releases/theora/%{name}-%{version}%{beta}.tar.gz
 #gw this is from texlive, it is not part of tetex
 Source1:	ltablex.sty
 #Patch0:		libtheora-1.1.1-libpng16.patch
