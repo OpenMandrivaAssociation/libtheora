@@ -16,7 +16,7 @@ Release:	%{?beta:0.%{beta}.}1
 License:	BSD
 Group:		Video
 Url:		https://www.theora.org/
-Source0:	http://downloads.xiph.org/releases/theora/%{name}-%{version}%{beta}.tar.gz
+Source0:	http://downloads.xiph.org/releases/theora/%{name}-%{version}.tar.gz
 #gw this is from texlive, it is not part of tetex
 Source1:	ltablex.sty
 #Patch0:		libtheora-1.1.1-libpng16.patch
@@ -76,7 +76,7 @@ The theora-tools package contains simple command line tools for use
 with theora bitstreams.define name vorbis-tools
 
 %prep
-%setup -qn %{name}-%{version}%{beta}
+%setup -qn %{name}-%{version}
 #patch0 -p0 -b .p0~
 #patch1 -p1 -b .p1~
 cp %{SOURCE1} doc/spec/
