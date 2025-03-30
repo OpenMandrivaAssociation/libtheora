@@ -7,20 +7,20 @@
 %define libnamedec %mklibname theoradec %{decmajor}
 %define libnameenc %mklibname theoraenc %{encmajor}
 %define develname %mklibname -d theora
-%define beta alpha1
+#define beta alpha1
 
 Summary:	Theora video compression codec
 Name:		libtheora
 Version:	1.2.0
-Release:	%{?beta:0.%{beta}.}3
+Release:	%{?beta:0.%{beta}.}1
 License:	BSD
 Group:		Video
 Url:		https://www.theora.org/
 Source0:	http://downloads.xiph.org/releases/theora/%{name}-%{version}%{beta}.tar.xz
 #gw this is from texlive, it is not part of tetex
 Source1:	ltablex.sty
-Patch0:		libtheora-1.1.1-libpng16.patch
-Patch1:		libtheora-1.1.1-fix-underlinking.patch
+#Patch0:		libtheora-1.1.1-libpng16.patch
+#Patch1:		libtheora-1.1.1-fix-underlinking.patch
 BuildRequires:	pkgconfig(sdl)
 BuildRequires:	pkgconfig(vorbis) >= 1.0.1
 BuildRequires:	pkgconfig(zlib)
@@ -77,8 +77,8 @@ with theora bitstreams.define name vorbis-tools
 
 %prep
 %setup -qn %{name}-%{version}%{beta}
-%patch0 -p0 -b .p0~
-%patch1 -p1 -b .p1~
+#patch0 -p0 -b .p0~
+#patch1 -p1 -b .p1~
 cp %{SOURCE1} doc/spec/
 %before_configure
 ./autogen.sh
