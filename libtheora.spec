@@ -1,6 +1,6 @@
 %define _disable_ld_no_undefined 1
 
-%define major 0
+%define major 2
 %define decmajor 1
 %define encmajor 1
 %define libname %mklibname theora %{major}
@@ -103,7 +103,7 @@ install -m 755 examples/.libs/encoder_example %{buildroot}/%{_bindir}/theora_enc
 install -m 755 examples/.libs/player_example %{buildroot}/%{_bindir}/theora_player
 
 %files -n %{libname}
-#{_libdir}/libtheora.so.%{major}*
+%{_libdir}/libtheora.so.%{major}*
 
 %files -n %{libnamedec}
 %{_libdir}/libtheoradec.so.%{decmajor}*
