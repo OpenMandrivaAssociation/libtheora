@@ -1,11 +1,14 @@
 %define _disable_ld_no_undefined 1
 
-%define major 2
-%define decmajor 1
-%define encmajor 1
-%define libname %mklibname theora %{major}
-%define libnamedec %mklibname theoradec %{decmajor}
-%define libnameenc %mklibname theoraenc %{encmajor}
+%define major 1
+%define decmajor 2
+%define encmajor 2
+%define libname %mklibname theora
+%define oldlibname %mklibname theora 0
+%define libnamedec %mklibname theoradec
+%define oldlibnamedec %mklibname theoradec 1
+%define libnameenc %mklibname theoraenc
+%define oldlibnameenc %mklibname theoraenc 1
 %define develname %mklibname -d theora
 #define beta alpha1
 
@@ -33,6 +36,7 @@ general-purpose compressed video format.
 Summary:	Theora video compression codec
 Group:		System/Libraries
 Provides:	%{name} = %{version}-%{release}
+%rename %{oldlibname}
 
 %description -n %{libname}
 Ogg Theora is a fully open, non-proprietary, patent-and-royalty-free,
@@ -41,6 +45,7 @@ general-purpose compressed video format.
 %package -n %{libnamedec}
 Summary:	Theora video decoder
 Group:		System/Libraries
+%rename %{oldlibnamedec}
 
 %description -n %{libnamedec}
 Ogg Theora is a fully open, non-proprietary, patent-and-royalty-free,
@@ -49,6 +54,7 @@ general-purpose compressed video format.
 %package -n %{libnameenc}
 Summary:	Theora video encoder
 Group:		System/Libraries
+%rename %{oldlibnameenc}
 
 %description -n %{libnameenc}
 Ogg Theora is a fully open, non-proprietary, patent-and-royalty-free,
@@ -103,13 +109,13 @@ install -m 755 examples/.libs/encoder_example %{buildroot}/%{_bindir}/theora_enc
 install -m 755 examples/.libs/player_example %{buildroot}/%{_bindir}/theora_player
 
 %files -n %{libname}
-#{_libdir}/libtheora.so.%{major}*
+%{_libdir}/libtheora.so.%{major}*
 
 %files -n %{libnamedec}
-#{_libdir}/libtheoradec.so.%{decmajor}*
+%{_libdir}/libtheoradec.so.%{decmajor}*
 
 %files -n %{libnameenc}
-#{_libdir}/libtheoraenc.so.%{encmajor}*
+%{_libdir}/libtheoraenc.so.%{encmajor}*
 
 %files -n theora-tools
 %{_bindir}/*
