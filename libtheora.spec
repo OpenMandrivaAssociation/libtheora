@@ -1,26 +1,29 @@
 %define _disable_ld_no_undefined 1
 
-%define major 0
-%define decmajor 1
-%define encmajor 1
-%define libname %mklibname theora %{major}
-%define libnamedec %mklibname theoradec %{decmajor}
-%define libnameenc %mklibname theoraenc %{encmajor}
+%define major 1
+%define decmajor 2
+%define encmajor 2
+%define libname %mklibname theora
+%define oldlibname %mklibname theora 0
+%define libnamedec %mklibname theoradec
+%define oldlibnamedec %mklibname theoradec 1
+%define libnameenc %mklibname theoraenc
+%define oldlibnameenc %mklibname theoraenc 1
 %define develname %mklibname -d theora
-%define beta alpha1
+#define beta alpha1
 
 Summary:	Theora video compression codec
 Name:		libtheora
 Version:	1.2.0
-Release:	%{?beta:0.%{beta}.}3
+Release:	%{?beta:0.%{beta}.}1
 License:	BSD
 Group:		Video
 Url:		https://www.theora.org/
-Source0:	http://downloads.xiph.org/releases/theora/%{name}-%{version}%{beta}.tar.xz
+Source0:	http://downloads.xiph.org/releases/theora/%{name}-%{version}.tar.gz
 #gw this is from texlive, it is not part of tetex
 Source1:	ltablex.sty
-Patch0:		libtheora-1.1.1-libpng16.patch
-Patch1:		libtheora-1.1.1-fix-underlinking.patch
+#Patch0:		libtheora-1.1.1-libpng16.patch
+#Patch1:		libtheora-1.1.1-fix-underlinking.patch
 BuildRequires:	pkgconfig(sdl)
 BuildRequires:	pkgconfig(vorbis) >= 1.0.1
 BuildRequires:	pkgconfig(zlib)
@@ -33,6 +36,7 @@ general-purpose compressed video format.
 Summary:	Theora video compression codec
 Group:		System/Libraries
 Provides:	%{name} = %{version}-%{release}
+%rename %{oldlibname}
 
 %description -n %{libname}
 Ogg Theora is a fully open, non-proprietary, patent-and-royalty-free,
@@ -41,6 +45,7 @@ general-purpose compressed video format.
 %package -n %{libnamedec}
 Summary:	Theora video decoder
 Group:		System/Libraries
+%rename %{oldlibnamedec}
 
 %description -n %{libnamedec}
 Ogg Theora is a fully open, non-proprietary, patent-and-royalty-free,
@@ -49,6 +54,7 @@ general-purpose compressed video format.
 %package -n %{libnameenc}
 Summary:	Theora video encoder
 Group:		System/Libraries
+%rename %{oldlibnameenc}
 
 %description -n %{libnameenc}
 Ogg Theora is a fully open, non-proprietary, patent-and-royalty-free,
@@ -76,9 +82,9 @@ The theora-tools package contains simple command line tools for use
 with theora bitstreams.define name vorbis-tools
 
 %prep
-%setup -qn %{name}-%{version}%{beta}
-%patch0 -p0 -b .p0~
-%patch1 -p1 -b .p1~
+%setup -qn %{name}-%{version}
+#patch0 -p0 -b .p0~
+#patch1 -p1 -b .p1~
 cp %{SOURCE1} doc/spec/
 %before_configure
 ./autogen.sh
