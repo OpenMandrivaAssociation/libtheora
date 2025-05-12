@@ -106,10 +106,10 @@ install -m 755 examples/.libs/player_example %{buildroot}/%{_bindir}/theora_play
 #{_libdir}/libtheora.so.%{major}*
 
 %files -n %{libnamedec}
-%{_libdir}/libtheoradec.so.%{decmajor}*
+#{_libdir}/libtheoradec.so.%{decmajor}*
 
 %files -n %{libnameenc}
-%{_libdir}/libtheoraenc.so.%{encmajor}*
+#{_libdir}/libtheoraenc.so.%{encmajor}*
 
 %files -n theora-tools
 %{_bindir}/*
