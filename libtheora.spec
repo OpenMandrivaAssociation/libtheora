@@ -24,6 +24,11 @@ Source0:	http://downloads.xiph.org/releases/theora/%{name}-%{version}.tar.gz
 Source1:	ltablex.sty
 #Patch0:		libtheora-1.1.1-libpng16.patch
 #Patch1:		libtheora-1.1.1-fix-underlinking.patch
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:	pkgconfig(sdl)
 BuildRequires:	pkgconfig(vorbis) >= 1.0.1
 BuildRequires:	pkgconfig(zlib)
